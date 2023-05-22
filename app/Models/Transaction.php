@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Transaction extends Model
 {
     use HasFactory;
-    function account(){
+    function account(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
         return $this->belongsTo(\App\Models\Account::class);
     }
 }

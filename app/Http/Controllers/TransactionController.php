@@ -51,8 +51,6 @@ class TransactionController extends Controller
             $transaction->type = $request->type;
             $transaction->amount = $request->amount;
             $transaction->date = $request->date;
-
-            // $invoice->save();
             if($transaction->save()) {
                 Account::where('id',$request->account)->increment('balance',$request->amount);
                 return redirect()->back()->with('success', 'Transaction has been made successfully!');
@@ -60,7 +58,6 @@ class TransactionController extends Controller
         }else{
             return Redirect::back()->withErrors($validated);
         }
-//        dd($request);
     }
 
     /**
